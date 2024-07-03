@@ -11,3 +11,20 @@ body {
     background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
     height: 100vh;
 }
+
+.container {
+    font-size: 1rem;
+    width: 90vw;
+    max-width: 37.5rem;
+    padding: 3rem 1.8rem;
+    background-color: #f0f0f0;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
+                0 1rem 2rem rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    color: #333;
+}
