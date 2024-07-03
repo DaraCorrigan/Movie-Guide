@@ -1,13 +1,14 @@
-;let movieNameRef = document.getElementById("movie-name");
-let search_button = document.getElementById("search_button");
+let NameRef = document.getElementById("name");
+let searchBtn = document.getElementById("search_button");
 let results = document.getElementById("results");
 
-let getMovie = () => {
-    let movieName = movieNameRef.value;
-    let url = `http://www.omdbapi.com/?t=${movieName}&apikey=${key}`;
 
-    if(movieName.length <= 0){
-        results.innerHTML = `<h3 class="msg">Please enter a movie or tv show </h3>`;
+let get = () => {
+    let Name = NameRef.value;
+    let url = `http://www.omdbapi.com/?t=${Name}&apikey=${key}`;
+
+    if (Name.length <= 0) {
+        results.innerHTML = `<h3 class="msg">Please enter a movie or TV show name </h3>`;
     }
 
     else {
@@ -50,5 +51,5 @@ let getMovie = () => {
     }
 };
 
-search_button.addEventListener("click", getMovie);
-window.addEventListener("load", getMovie);
+searchBtn.addEventListener("click", get);
+window.addEventListener("load", get);
