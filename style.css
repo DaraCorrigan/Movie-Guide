@@ -216,14 +216,15 @@ header h1 {
 .container {
     width: 90vw;
     max-width: 1200px;
-    margin-top: 2rem;
-    padding: 2rem;
+    padding: 5rem;
     background-color: #f0f0f0;
     border-radius: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
                 0 1rem 2rem rgba(0, 0, 0, 0.1);
     border: 1px solid #e0e0e0;
     color: #333;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
 }
 
 .search_container {
@@ -260,7 +261,7 @@ header h1 {
 #results {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
+    gap: 3rem;
 }
 
 .info {
