@@ -76,23 +76,33 @@ let get = () => {
                 if (data.Response === "True") {
                     let movies = data.Search;
                     results.innerHTML = '';
+
                     movies.forEach(movie => {
-                        results.innerHTML += `
-                            <div class="info card">
-                                <div class="poster-container">
-                                    <img src="${movie.Poster !== 'N/A' ? movie.Poster : 'default_poster.jpg'}" class="poster" alt="Poster">
-                                </div>
-                                <div class="card-content">
-                                    <h2>${movie.Title}</h2>
-                                    <p>Type: ${movie.Type}</p>
-                                    <p>Year: ${movie.Year}</p>
-                                    <div class="rating">
-                                        <img src="star.svg" alt="Star">
-                                        <h4>${movie.imdbID}</h4>
+                        let movieUrl = `http://www.omdbapi.com/?i=${movie.imdbID}&apikey=${key}`;
+                        
+                        fetch(movieUrl)
+                            .then(resp => resp.json())
+                            .then(movieData => {
+                                results.innerHTML += `
+                                    <div class="info card">
+                                        <div class="poster-container">
+                                            <img src="${movieData.Poster !== 'N/A' ? movieData.Poster : 'default_poster.jpg'}" class="poster" alt="Poster">
+                                        </div>
+                                        <div class="card-content">
+                                            <h2>${movieData.Title}</h2>
+                                            <p>Type: ${movieData.Type}</p>
+                                            <p>Year: ${movieData.Year}</p>
+                                            <div class="rating">
+                                                <img src="star.svg" alt="Star">
+                                                <h4>${movieData.imdbRating}</h4>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        `;
+                                `;
+                            })
+                            .catch(error => {
+                                console.error('Error fetching movie details:', error);
+                            });
                     });
                 } else {
                     results.innerHTML = `<h3 class="msg">${data.Error}</h3>`;
