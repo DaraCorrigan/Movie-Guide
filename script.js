@@ -57,6 +57,9 @@
 let NameRef = document.getElementById("name");
 let searchBtn = document.getElementById("search_button");
 let results = document.getElementById("results");
+let popup = document.getElementById("popup");
+let popupDetails = document.getElementById("popup-details"); // Corrected the id to match the HTML
+let closeButton = document.querySelector(".close-button");
 
 let get = () => {
     let Name = NameRef.value.trim();
@@ -79,26 +82,30 @@ let get = () => {
 
                     movies.forEach(movie => {
                         let movieUrl = `http://www.omdbapi.com/?i=${movie.imdbID}&apikey=${key}`;
-                        
+
                         fetch(movieUrl)
                             .then(resp => resp.json())
                             .then(movieData => {
-                                results.innerHTML += `
-                                    <div class="info card">
-                                        <div class="poster-container">
-                                            <img src="${movieData.Poster !== 'N/A' ? movieData.Poster : 'default_poster.jpg'}" class="poster" alt="Poster">
-                                        </div>
-                                        <div class="card-content">
-                                            <h2>${movieData.Title}</h2>
-                                            <p>Type: ${movieData.Type}</p>
-                                            <p>Year: ${movieData.Year}</p>
-                                            <div class="rating">
-                                                <img src="star.svg" alt="Star">
-                                                <h4>${movieData.imdbRating}</h4>
-                                            </div>
+                                let card = document.createElement('div');
+                                card.classList.add('info', 'card');
+                                card.innerHTML = `
+                                    <div class="poster-container">
+                                        <img src="${movieData.Poster !== 'N/A' ? movieData.Poster : 'default_poster.jpg'}" class="poster" alt="Poster">
+                                    </div>
+                                    <div class="card-content">
+                                        <h2>${movieData.Title}</h2>
+                                        <p>Type: ${movieData.Type}</p>
+                                        <p>Year: ${movieData.Year}</p>
+                                        <div class="rating">
+                                            <img src="star.svg" alt="Star">
+                                            <h4>${movieData.imdbRating}</h4>
                                         </div>
                                     </div>
                                 `;
+
+                                card.addEventListener('click', () => showPopup(movieData));
+
+                                results.appendChild(card);
                             })
                             .catch(error => {
                                 console.error('Error fetching movie details:', error);
@@ -115,5 +122,34 @@ let get = () => {
     }
 };
 
+let showPopup = (movieData) => {
+    popupDetails.innerHTML = `
+        <h2>${movieData.Title}</h2>
+        <p><strong>Type:</strong> ${movieData.Type}</p>
+        <p><strong>Year:</strong> ${movieData.Year}</p>
+        <p><strong>Rating:</strong> ${movieData.imdbRating}</p>
+        <p><strong>Genre:</strong> ${movieData.Genre}</p>
+        <p><strong>Director:</strong> ${movieData.Director}</p>
+        <p><strong>Actors:</strong> ${movieData.Actors}</p>
+        <p><strong>Plot:</strong> ${movieData.Plot}</p>
+        <div class="poster-container">
+            <img src="${movieData.Poster !== 'N/A' ? movieData.Poster : 'default_poster.jpg'}" class="poster" alt="Poster">
+        </div>
+    `;
+    popup.style.display = 'flex';
+};
+
+let closePopup = () => {
+    popup.style.display = 'none';
+};
+
 searchBtn.addEventListener("click", get);
 window.addEventListener("load", get);
+closeButton.addEventListener("click", closePopup);
+popup.addEventListener("click", (event) => {
+    if (event.target === popup) {
+        closePopup();
+    }
+});
+
+

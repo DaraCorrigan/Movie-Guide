@@ -334,14 +334,17 @@ header h1 {
 .popup {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: red;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f0f0f0;
     z-index: 1000;
-    justify-content: center;
-    align-items: center;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 50%;
+    max-height: 100%;
+    overflow-y: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .popup_content {
