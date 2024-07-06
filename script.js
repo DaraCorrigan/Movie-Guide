@@ -124,31 +124,36 @@ let get = () => {
 
 let showPopup = (movieData) => {
     popupDetails.innerHTML = `
-        <div class="popup-movie-info">
-            <h2 class="popup-movie-title">${movieData.Title}</h2>
-            <div class="popup-details-row">
-                <p><strong>Type:</strong> ${movieData.Type}</p>
-                <p><strong>Year:</strong> ${movieData.Year}</p>
-                <p><strong>Rating:</strong> ${movieData.imdbRating}</p>
+        <div class="popup-content">
+            <img src="${movieData.Poster !== 'N/A' ? movieData.Poster : 'default_poster.jpg'}" class="poster">
+            <div class="details">
+                <h2>${movieData.Title}</h2>
+                <div class="rating">
+                    <img src="star-icon.svg">
+                    <h4>${movieData.imdbRating}</h4>
+                </div>
+                <div class="info">
+                    <span>${movieData.Rated}</span>
+                    <span>${movieData.Year}</span>
+                    <span>${movieData.Runtime}</span>
+                </div>
+                <div class="genre">
+                    <h3>Genre:</h3>
+                    <span>${movieData.Genre}</span>
+                </div>
+                <h3>Plot:</h3>
+                <p>${movieData.Plot}</p>
+                <h3>Cast:</h3>
+                <p>${movieData.Actors}</p>
             </div>
-            <div class="popup-details-row">
-                <p><strong>Genre:</strong> ${movieData.Genre}</p>
-                <p><strong>Director:</strong> ${movieData.Director}</p>
-                <p><strong>Actors:</strong> ${movieData.Actors}</p>
-            </div>
-            <div class="popup-details-row">
-                <p><strong>Plot:</strong> ${movieData.Plot}</p>
-            </div>
-            <div class="popup-poster-container">
-                <img src="${movieData.Poster !== 'N/A' ? movieData.Poster : 'default_poster.jpg'}" class="popup-poster" alt="Poster">
-            </div>
+            <span class="close-button" onclick="closePopup()">&times;</span>
         </div>
     `;
-    popup.style.display = 'flex';
+    popup.style.display = "block";
 };
 
 let closePopup = () => {
-    popup.style.display = 'none';
+    popup.style.display = "none";
 };
 
 searchBtn.addEventListener("click", get);
