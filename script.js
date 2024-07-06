@@ -123,33 +123,35 @@ let get = () => {
 };
 
 let showPopup = (movieData) => {
+    const popupDetails = document.querySelector('.popup-details');
     popupDetails.innerHTML = `
-        <div class="popup-content">
-            <img src="${movieData.Poster !== 'N/A' ? movieData.Poster : 'default_poster.jpg'}" class="poster">
-            <div class="details">
-                <h2>${movieData.Title}</h2>
-                <div class="rating">
-                    <img src="star-icon.svg">
-                    <h4>${movieData.imdbRating}</h4>
-                </div>
-                <div class="info">
-                    <span>${movieData.Rated}</span>
-                    <span>${movieData.Year}</span>
-                    <span>${movieData.Runtime}</span>
-                </div>
-                <div class="genre">
-                    <h3>Genre:</h3>
-                    <span>${movieData.Genre}</span>
-                </div>
+        <img src="${movieData.Poster !== 'N/A' ? movieData.Poster : 'default_poster.jpg'}" class="poster-image">
+        <div class="popup-info">
+            <h2>${movieData.Title}</h2>
+            <div class="popup-rating">
+                <span class="star">&#9733;</span>
+                <span class="score">${movieData.imdbRating}</span>
+            </div>
+            <div class="popup-details-info">
+                <span>${movieData.Rated}</span>
+                <span>${movieData.Year}</span>
+                <span>${movieData.Runtime}</span>
+            </div>
+            <div class="popup-genre">
+                ${movieData.Genre.split(', ').map(genre => `<div>${genre}</div>`).join('')}
+            </div>
+            <div class="popup-plot">
                 <h3>Plot:</h3>
                 <p>${movieData.Plot}</p>
+            </div>
+            <div class="popup-cast">
                 <h3>Cast:</h3>
                 <p>${movieData.Actors}</p>
             </div>
-            <span class="close-button" onclick="closePopup()">&times;</span>
         </div>
+        <span class="close_button" onclick="closePopup()">&times;</span>
     `;
-    popup.style.display = "block";
+    document.getElementById('popup').style.display = "block";
 };
 
 let closePopup = () => {
