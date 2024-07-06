@@ -337,19 +337,19 @@ header h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #f0f0f0;
+    background-color: rgba(0, 0, 0, 0.8);
     z-index: 1000;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    color: #fff;
     max-width: 80%;
     max-height: 80%;
-    overflow-y: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .popup-content {
     position: relative;
-    color: #fff;
 }
 
 .close-button {

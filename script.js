@@ -124,16 +124,24 @@ let get = () => {
 
 let showPopup = (movieData) => {
     popupDetails.innerHTML = `
-        <h2>${movieData.Title}</h2>
-        <p><strong>Type:</strong> ${movieData.Type}</p>
-        <p><strong>Year:</strong> ${movieData.Year}</p>
-        <p><strong>Rating:</strong> ${movieData.imdbRating}</p>
-        <p><strong>Genre:</strong> ${movieData.Genre}</p>
-        <p><strong>Director:</strong> ${movieData.Director}</p>
-        <p><strong>Actors:</strong> ${movieData.Actors}</p>
-        <p><strong>Plot:</strong> ${movieData.Plot}</p>
-        <div class="poster-container">
-            <img src="${movieData.Poster !== 'N/A' ? movieData.Poster : 'default_poster.jpg'}" class="poster" alt="Poster">
+        <div class="popup-movie-info">
+            <h2 class="popup-movie-title">${movieData.Title}</h2>
+            <div class="popup-details-row">
+                <p><strong>Type:</strong> ${movieData.Type}</p>
+                <p><strong>Year:</strong> ${movieData.Year}</p>
+                <p><strong>Rating:</strong> ${movieData.imdbRating}</p>
+            </div>
+            <div class="popup-details-row">
+                <p><strong>Genre:</strong> ${movieData.Genre}</p>
+                <p><strong>Director:</strong> ${movieData.Director}</p>
+                <p><strong>Actors:</strong> ${movieData.Actors}</p>
+            </div>
+            <div class="popup-details-row">
+                <p><strong>Plot:</strong> ${movieData.Plot}</p>
+            </div>
+            <div class="popup-poster-container">
+                <img src="${movieData.Poster !== 'N/A' ? movieData.Poster : 'default_poster.jpg'}" class="popup-poster" alt="Poster">
+            </div>
         </div>
     `;
     popup.style.display = 'flex';
