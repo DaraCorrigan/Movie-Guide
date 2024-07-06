@@ -58,7 +58,7 @@ let NameRef = document.getElementById("name");
 let searchBtn = document.getElementById("search_button");
 let results = document.getElementById("results");
 let popup = document.getElementById("popup");
-let popupDetails = document.getElementById("popup-details"); // Corrected the id to match the HTML
+let popupDetails = document.querySelector(".popup-details");
 let closeButton = document.querySelector(".close-button");
 
 let get = () => {
@@ -151,5 +151,6 @@ popup.addEventListener("click", (event) => {
         closePopup();
     }
 });
+
 
 
