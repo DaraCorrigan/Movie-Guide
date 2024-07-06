@@ -229,9 +229,9 @@ header h1 {
 
 .search_container {
     display: flex;
-    max-width: 400px;
+    max-width: 500px;
     margin: 0 auto;
-    margin-bottom: 1.5rem;
+    margin-bottom: 3rem;
 }
 
 .search_container input[type="text"] {
