@@ -332,13 +332,13 @@ header h1 {
 }
 
 .popup_content {
-    background-color: #1e293b;
+    background-color: #f0f0f0;
     margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 60%;
-    border-radius: 0.6em;
-    color: #fff;
+    width: 50%;
+    border-radius: 1.6em;
+    color: #0c0d13;
     display: flex;
     gap: 1.2em;
     position: relative;
@@ -356,7 +356,7 @@ header h1 {
 
 .close_button:hover,
 .close_button:focus {
-    color: #fff;
+    color: red;
     text-decoration: none;
 }
 
