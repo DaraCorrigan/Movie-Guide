@@ -165,4 +165,4 @@ popup.addEventListener("click", (event) => {
     if (event.target === popup) {
         closePopup();
     }
-});.
+});
